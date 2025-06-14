@@ -17,13 +17,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install nbconvert
+          pip install nbconvert plotly
 
       - name: Convert .ipynb to HTML
         run: |
           mkdir -p docs
           for nb in notebooks/*.ipynb; do
-            jupyter nbconvert "$nb" --to html_embed --output-dir docs
+            jupyter nbconvert "$nb" --to html --output-dir docs
           done
 
       - name: Add index.html

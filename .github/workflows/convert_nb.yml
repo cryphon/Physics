@@ -46,7 +46,7 @@ jobs:
           commit_user_name: github-actions
           commit_user_email: github-actions@github.com
           push_options: '--force'
-          token: ${{ secrets.GH_PAGES }}
+          token: ${{ secrets.GH_PAT }}
 
 
 

@@ -23,7 +23,7 @@ jobs:
         run: |
           mkdir -p docs
           for nb in notebooks/*.ipynb; do
-            jupyter nbconvert "$nb" --to html --output-dir docs
+            jupyter nbconvert "$nb" --to html_embed --output-dir docs
           done
 
       - name: Add index.html

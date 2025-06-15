@@ -28,14 +28,29 @@ jobs:
 
       - name: Add index.html
         run: |
-          echo '<!DOCTYPE html><html><head><title>Notebook Index</title></head><body><h1>Notebook Gallery</h1><ul>' > docs/index.html
+          echo '<!DOCTYPE html>
+          <html lang="en" class="dark">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Notebook Gallery</title>
+            <script src="https://cdn.tailwindcss.com"></script>
+          </head>
+          <body class="bg-gray-900 text-white min-h-screen font-sans p-8">
+            <h1 class="text-3xl font-bold mb-6">📘 Notebook Gallery</h1>
+            <ul class="space-y-4">
+          ' > docs/index.html
+
           for file in docs/*.html; do
             fname=$(basename "$file")
             if [ "$fname" != "index.html" ]; then
-              echo "<li><a href='$fname'>$fname</a></li>" >> docs/index.html
+              echo "<li><a class='text-blue-400 hover:underline' href='$fname'>$fname</a></li>" >> docs/index.html
             fi
           done
-          echo '</ul></body></html>' >> docs/index.html
+
+          echo '</ul>
+          </body>
+          </html>' >> docs/index.html
 
       - name: Commit & Push generated HTML
         uses: stefanzweifel/git-auto-commit-action@v5
